@@ -11,7 +11,11 @@
         $.ajax({
           url: url,
           type: 'post',
-          data: { position: ui.item.index() + 1 },
+          data: {
+            position: ui.item.index() + 1,
+            prev_position: ui.item.prev().find('[data-position]').data('position'),
+            next_position: ui.item.next().find('[data-position]').data('position')
+          },
           success: function() { window.location.reload() }
         });
       }
