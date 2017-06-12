@@ -13,9 +13,9 @@ module ActiveAdmin
           if prev_position && next_position
             position = [prev_position.to_i, next_position.to_i].min + 1
           elsif prev_position
-            position = prev_position.to_i < resource.id ? prev_position.to_i : prev_position.to_i + 1
+            position = prev_position.to_i < resource.position ? prev_position.to_i : prev_position.to_i + 1
           elsif next_position
-            position = next_position.to_i < resource.id ? next_position.to_i : next_position.to_i + 1
+            position = next_position.to_i < resource.position ? next_position.to_i : next_position.to_i + 1
           end
           position -= 1 if resource.position < position
           if defined?(::Mongoid::Orderable) &&
