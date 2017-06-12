@@ -17,6 +17,7 @@ module ActiveAdmin
           elsif next_position
             position = next_position.to_i < resource.id ? next_position.to_i : next_position.to_i + 1
           end
+          position -= 1 if resource.position < position
           if defined?(::Mongoid::Orderable) &&
             resource.class.included_modules.include?(::Mongoid::Orderable)
               resource.move_to! position
